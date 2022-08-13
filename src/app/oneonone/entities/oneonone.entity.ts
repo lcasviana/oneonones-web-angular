@@ -1,6 +1,6 @@
-import { EmployeeEntity } from "./employee.entity";
-import { MeetingEntity } from "./meeting.entity";
-import { StatusEntity } from "./status.entity";
+import { EmployeeEntity } from './employee.entity';
+import { MeetingEntity } from './meeting.entity';
+import { StatusEntity } from './status.entity';
 
 export class OneononeInsert {
   leaderId: string = null!;

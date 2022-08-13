@@ -6,7 +6,11 @@ import { DashboardRepository } from './repositories/dashboard.repository';
 import { EmployeeRepository } from './repositories/employee.repository';
 import { MeetingRepository } from './repositories/meeting.repository';
 import { OneononeRepository } from './repositories/oneonone.repository';
-import { OneononeComponent } from './views/oneonone.component';
+import { OneononeComponent } from './presentations/oneonone.component';
+import { OneononeListComponent } from './presentations/oneonone-list/oneonone-list.component';
+import { OneononeListItemComponent } from './presentations/oneonone-list-item/oneonone-list-item.component';
+import { MaterialModule } from '../material.module';
+import { OneononeFrequencyPipe } from './pipes/oneonone-frequency.pipe';
 
 const routes = [
   {
@@ -23,12 +27,16 @@ class OneononeRoutingModule { }
 
 @NgModule({
   declarations: [
+    OneononeFrequencyPipe,
     OneononeComponent,
+    OneononeListComponent,
+    OneononeListItemComponent,
   ],
   imports: [
     CommonModule,
     HttpClientModule,
     OneononeRoutingModule,
+    MaterialModule,
   ],
   providers: [
     DashboardRepository,

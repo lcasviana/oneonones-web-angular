@@ -1,7 +1,7 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
-import { Subscription } from "rxjs";
-import { DashboardEntity } from "../entities/dashboard.entity";
-import { DashboardRepository } from "../repositories/dashboard.repository";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { DashboardEntity } from '../entities/dashboard.entity';
+import { DashboardRepository } from '../repositories/dashboard.repository';
 
 @Component({
   templateUrl: './oneonone.component.html',
