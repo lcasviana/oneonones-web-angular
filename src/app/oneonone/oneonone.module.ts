@@ -13,10 +13,8 @@ import { MaterialModule } from '../material.module';
 import { OneononeFrequencyPipe } from './pipes/oneonone-frequency.pipe';
 
 const routes = [
-  {
-    path: '',
-    component: OneononeComponent,
-  },
+  { path: '', component: OneononeComponent },
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({
