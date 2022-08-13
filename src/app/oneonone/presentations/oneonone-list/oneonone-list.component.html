@@ -1,3 +1,30 @@
+<mat-card>
+  <mat-form-field appearance="fill">
+    <mat-label>Is Leader?</mat-label>
+    <mat-select #isLeader>
+      <mat-option *ngFor="let option of [true, false]" [value]="option">
+        {{option ? 'Yes' : 'No'}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Employee</mat-label>
+    <mat-select #e>
+      <mat-option *ngFor="let e of employees" [value]="e.id">
+        {{e.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Frequency</mat-label>
+    <mat-select #frequency>
+      <mat-option *ngFor="let frequency of [7,15,30,60,90,180,365,999]" [value]="frequency">
+        {{frequency | frequency}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-button (click)="insertOneonone(isLeader.value, e.value, frequency.value)">Insert</button>
+</mat-card>
 <ng-container *ngFor="let oneonone of oneonones">
   <app-oneonone-list-item [employee]="employee" [oneonone]="oneonone"></app-oneonone-list-item>
 </ng-container>

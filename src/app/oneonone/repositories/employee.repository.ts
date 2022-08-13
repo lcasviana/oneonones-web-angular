@@ -8,6 +8,10 @@ import { Observable } from 'rxjs';
 export class EmployeeRepository {
   constructor(private http: HttpClient) { }
 
+  getAll(): Observable<EmployeeEntity[]> {
+    return this.http.get<EmployeeEntity[]>(`${environment.oneononeApiUrl}/v1/employees`);
+  }
+
   insert(employeeInput: EmployeeInput): Observable<EmployeeEntity> {
     return this.http.post<EmployeeEntity>(`${environment.oneononeApiUrl}/v1/employees`, employeeInput);
   }

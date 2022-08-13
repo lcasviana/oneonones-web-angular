@@ -9,7 +9,7 @@
   </ng-container>
   <h6 class="mat-caption">Frequency</h6>
   <h3 class="mat-h3">{{oneonone.frequency | frequency}}</h3>
-  <ng-container *ngIf="oneonone.frequency !== 999">
+  <ng-container *ngIf="oneonone.frequency !== 999 && oneonone.meetings.length">
     <h6 class="mat-caption">Last Meeting</h6>
     <h3 class="mat-h3">{{oneonone.status.lastMeeting | date: 'dd/MM/yyyy'}}</h3>
     <h6 class="mat-caption">Next Meeting</h6>
@@ -17,12 +17,57 @@
     <h6 class="mat-caption">Is Late?</h6>
     <h3 class="mat-h3">{{oneonone.status.isLate ? 'Yes' : 'No'}}</h3>
   </ng-container>
+  <mat-card>
+    <mat-form-field appearance="fill">
+      <mat-label>Meeting Date</mat-label>
+      <input #meetingDate matInput [matDatepicker]="picker">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Annotation</mat-label>
+      <textarea #annotation matInput placeholder="..."></textarea>
+    </mat-form-field>
+    <button mat-button (click)="insertMeeting(meetingDate.value, annotation.value)">Insert</button>
+  </mat-card>
+  <mat-card>
+    <mat-form-field appearance="fill">
+      <mat-label>Frequency</mat-label>
+      <mat-select #frequency>
+        <mat-option *ngFor="let frequency of [7,15,30,60,90,180,365,999]" [value]="frequency">
+          {{frequency | frequency}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-button (click)="updateOneonone(oneonone.id, frequency.value)">Update</button>
+  </mat-card>
+  <mat-card>
+    <button mat-button (click)="deleteOneonone(oneonone.id)">Delete</button>
+  </mat-card>
   <mat-divider></mat-divider>
   <h6 class="mat-caption">Meetings</h6>
   <ng-container *ngFor="let meeting of oneonone.meetings">
-    <h6 class="mat-caption">Meeting Date</h6>
-    <h3 class="mat-h3">{{meeting.meetingDate | date: 'dd/MM/yyyy'}}</h3>
-    <h6 class="mat-caption">Annotation</h6>
-    <h3 class="mat-h3">{{meeting.annotation}}</h3>
+    <mat-card>
+      <h6 class="mat-caption">Meeting Date</h6>
+      <h3 class="mat-h3">{{meeting.meetingDate | date: 'dd/MM/yyyy'}}</h3>
+      <h6 class="mat-caption">Annotation</h6>
+      <h3 class="mat-h3">{{meeting.annotation}}</h3>
+    </mat-card>
+    <mat-card>
+      <mat-form-field appearance="fill">
+        <mat-label>Meeting Date</mat-label>
+        <input #meetingDate matInput [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Annotation</mat-label>
+        <textarea #annotation matInput placeholder="..."></textarea>
+      </mat-form-field>
+      <button mat-button (click)="updateMeeting(meeting.id, meetingDate.value, annotation.value)">Update</button>
+    </mat-card>
+    <mat-card>
+      <button mat-button (click)="deleteMeeting(meeting.id)">Delete</button>
+    </mat-card>
   </ng-container>
 </mat-card>
