@@ -1,0 +1,27 @@
+<mat-card>
+  <mat-form-field appearance="fill">
+    <mat-label>Meeting Date</mat-label>
+    <input #meetingDate matInput [matDatepicker]="picker">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Annotation</mat-label>
+    <textarea #annotation matInput placeholder="..."></textarea>
+  </mat-form-field>
+  <button mat-button (click)="insertMeeting(meetingDate.value, annotation.value)">Insert</button>
+</mat-card>
+<mat-card>
+  <mat-form-field appearance="fill">
+    <mat-label>Frequency</mat-label>
+    <mat-select #frequency>
+      <mat-option *ngFor="let frequency of [7,15,30,60,90,180,365,999]" [value]="frequency">
+        {{frequency | frequency}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-button (click)="updateOneonone(oneonone.id, frequency.value)">Update</button>
+</mat-card>
+<mat-card>
+  <button mat-button (click)="deleteOneonone(oneonone.id)">Delete</button>
+</mat-card>

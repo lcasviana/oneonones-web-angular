@@ -8,8 +8,12 @@ import { Observable } from 'rxjs';
 export class EmployeeRepository {
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<EmployeeModel[]> {
+  obtainAll(): Observable<EmployeeModel[]> {
     return this.http.get<EmployeeModel[]>(`${environment.oneononeApiUrl}/v1/employees`);
+  }
+
+  obtainById(employeeId: string): Observable<EmployeeModel> {
+    return this.http.get<EmployeeModel>(`${environment.oneononeApiUrl}/v1/employees/${employeeId}`);
   }
 
   insert(employeeInput: EmployeeInput): Observable<EmployeeModel> {

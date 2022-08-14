@@ -1,0 +1,35 @@
+<h1 mat-dialog-title>Insert one-on-one</h1>
+<mat-dialog-content>
+  <section class="column">
+    <mat-form-field appearance="outline">
+      <mat-label>Is Leader?</mat-label>
+      <mat-select #isLeader>
+        <mat-option *ngFor="let option of options" [value]="option">
+          {{option ? 'Yes' : 'No'}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Cowoker</mat-label>
+      <mat-select #coworkerId>
+        <mat-option *ngFor="let coworker of employees" [value]="coworker.id">
+          {{coworker.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Frequency</mat-label>
+      <mat-select #frequency>
+        <mat-option *ngFor="let frequency of frequencies" [value]="frequency">
+          {{frequency | frequency}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </section>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button color="primary"
+    (click)="isLeader.value = null; coworkerId.value = null; frequency.value = null;">Clear</button>
+  <button mat-raised-button color="primary"
+    (click)="insertOneonone(isLeader.value, coworkerId.value, frequency.value)">Insert</button>
+</mat-dialog-actions>

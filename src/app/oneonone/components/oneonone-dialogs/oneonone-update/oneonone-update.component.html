@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>Update one-on-one</h1>
+<mat-dialog-content>
+  <section class="column">
+    <mat-form-field appearance="outline">
+      <mat-label>Frequency</mat-label>
+      <mat-select #frequency>
+        <mat-option *ngFor="let frequency of frequencies" [value]="frequency">
+          {{frequency | frequency}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </section>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button color="primary" (click)="frequency.value = null;">Clear</button>
+  <button mat-raised-button color="primary" (click)="updateOneonone(oneonone.id, frequency.value)">Update</button>
+</mat-dialog-actions>

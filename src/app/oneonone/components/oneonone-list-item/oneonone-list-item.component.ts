@@ -1,59 +1,43 @@
-import { Component, Input, OnDestroy } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { ReplaySubject, takeUntil } from 'rxjs';
+import { Component, Input } from '@angular/core';
 import { EmployeeModel } from '../../models/employee.model';
 import { OneononeModel } from '../../models/oneonone.model';
-import { MeetingRepository } from '../../data/meeting.repository';
-import { OneononeRepository } from '../../data/oneonone.repository';
+import { MatDialog } from '@angular/material/dialog';
+import { OneononeUpdateDialog } from '../oneonone-dialogs/oneonone-update/oneonone-update.component';
+import { OneononeDeleteDialog } from '../oneonone-dialogs/oneonone-delete/oneonone-delete.component';
 
 @Component({
   selector: 'app-oneonone-list-item',
   templateUrl: './oneonone-list-item.component.html',
 })
-export class OneononeListItemComponent implements OnDestroy {
-  private readonly destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
-
+export class OneononeListItemComponent {
   @Input() employee: EmployeeModel = null!;
   @Input() oneonone: OneononeModel = null!;
 
-  constructor(
-    private snackBar: MatSnackBar,
-    private oneononeRepository: OneononeRepository,
-    private meetingRepository: MeetingRepository,
-  ) { }
+  constructor(public dialog: MatDialog) { }
 
-  ngOnDestroy(): void {
-    this.destroyed$.next(true);
-    this.destroyed$.complete();
+  updateOneonone(): void {
+    this.dialog.open(OneononeUpdateDialog, { data: { oneonone: this.oneonone } });
   }
 
-  updateOneonone(oneononeId: string, frequency: number) {
-    this.oneononeRepository.update(oneononeId, { frequency })
-      .pipe(takeUntil(this.destroyed$))
-      .subscribe({
-        next: _ => this.snackBar.open('One-on-one updated.', 'OK'),
-        error: _ => this.snackBar.open('Error updating one-on-one.', 'OK'),
-      });
+  deleteOneonone(): void {
+    this.dialog.open(OneononeDeleteDialog, { data: { oneonone: this.oneonone } });
   }
 
-  deleteOneonone(oneononeId: string) {
-    this.oneononeRepository.delete(oneononeId)
-      .pipe(takeUntil(this.destroyed$))
-      .subscribe({
-        next: _ => this.snackBar.open('One-on-one deleted.', 'OK'),
-        error: _ => this.snackBar.open('Error deleting one-on-one.', 'OK'),
-      });
-  }
+  // insertMeeting(): void {
+  //   this.dialog.open(OneononeMeetingInsertDialog);
+  // }
 
-  insertMeeting(dateString: string, annotation: string) {
-    const leaderId = this.oneonone.leader.id;
-    const ledId = this.oneonone.led.id;
-    const meetingDate = new Date(dateString);
-    this.meetingRepository.insert({ leaderId, ledId, meetingDate, annotation })
-      .pipe(takeUntil(this.destroyed$))
-      .subscribe({
-        next: _ => this.snackBar.open('Meeting inserted.', 'OK'),
-        error: _ => this.snackBar.open('Error inserting meeting.', 'OK'),
-      });
-  }
+  
+
+  // insertMeeting(dateString: string, annotation: string) {
+  //   const leaderId = this.oneonone.leader.id;
+  //   const ledId = this.oneonone.led.id;
+  //   const meetingDate = new Date(dateString);
+  //   this.meetingRepository.insert({ leaderId, ledId, meetingDate, annotation })
+  //     .pipe(takeUntil(this.destroyed$))
+  //     .subscribe({
+  //       next: _ => this.snackBar.open('Meeting inserted.', 'OK'),
+  //       error: _ => this.snackBar.open('Error inserting meeting.', 'OK'),
+  //     });
+  // }
 }

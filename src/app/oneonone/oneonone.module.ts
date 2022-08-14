@@ -11,6 +11,11 @@ import { OneononeListComponent } from './components/oneonone-list/oneonone-list.
 import { OneononeListItemComponent } from './components/oneonone-list-item/oneonone-list-item.component';
 import { MaterialModule } from '../material.module';
 import { OneononeFrequencyPipe } from './pipes/oneonone-frequency.pipe';
+import { DashboardState } from './services/dashboard-state.service';
+import { EmployeeState } from './services/employee-state.service';
+import { OneononeInsertDialog } from './components/oneonone-dialogs/oneonone-insert/oneonone-insert.component';
+import { OneononeDeleteDialog } from './components/oneonone-dialogs/oneonone-delete/oneonone-delete.component';
+import { OneononeUpdateDialog } from './components/oneonone-dialogs/oneonone-update/oneonone-update.component';
 
 const routes = [
   { path: '', component: OneononeComponent },
@@ -29,6 +34,9 @@ class OneononeRoutingModule { }
     OneononeComponent,
     OneononeListComponent,
     OneononeListItemComponent,
+    OneononeDeleteDialog,
+    OneononeInsertDialog,
+    OneononeUpdateDialog,
   ],
   imports: [
     CommonModule,
@@ -41,6 +49,8 @@ class OneononeRoutingModule { }
     EmployeeRepository,
     MeetingRepository,
     OneononeRepository,
+    DashboardState,
+    EmployeeState,
   ],
 })
 export class OneononeModule { }
