@@ -2,8 +2,8 @@ import { Component, Input } from '@angular/core';
 import { EmployeeModel } from '../../models/employee.model';
 import { OneononeModel } from '../../models/oneonone.model';
 import { MatDialog } from '@angular/material/dialog';
-import { OneononeUpdateDialog } from '../oneonone-dialogs/oneonone-update/oneonone-update.component';
-import { OneononeDeleteDialog } from '../oneonone-dialogs/oneonone-delete/oneonone-delete.component';
+import { OneononeUpdateDialog } from '../oneonone-dialog/oneonone-update-dialog/oneonone-update-dialog.component';
+import { OneononeDeleteDialog } from '../oneonone-dialog/oneonone-delete-dialog/oneonone-delete-dialog.component';
 
 @Component({
   selector: 'app-oneonone-list-item',

@@ -13,9 +13,9 @@ import { MaterialModule } from '../material.module';
 import { OneononeFrequencyPipe } from './pipes/oneonone-frequency.pipe';
 import { DashboardState } from './services/dashboard-state.service';
 import { EmployeeState } from './services/employee-state.service';
-import { OneononeInsertDialog } from './components/oneonone-dialogs/oneonone-insert/oneonone-insert.component';
-import { OneononeDeleteDialog } from './components/oneonone-dialogs/oneonone-delete/oneonone-delete.component';
-import { OneononeUpdateDialog } from './components/oneonone-dialogs/oneonone-update/oneonone-update.component';
+import { OneononeInsertDialog } from './components/oneonone-dialog/oneonone-insert-dialog/oneonone-insert-dialog.component';
+import { OneononeDeleteDialog } from './components/oneonone-dialog/oneonone-delete-dialog/oneonone-delete-dialog.component';
+import { OneononeUpdateDialog } from './components/oneonone-dialog/oneonone-update-dialog/oneonone-update-dialog.component';
 
 const routes = [
   { path: '', component: OneononeComponent },

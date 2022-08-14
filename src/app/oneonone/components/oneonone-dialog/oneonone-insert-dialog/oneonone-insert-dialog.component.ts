@@ -8,7 +8,7 @@ import { DashboardState } from 'src/app/oneonone/services/dashboard-state.servic
 import { EmployeeState } from 'src/app/oneonone/services/employee-state.service';
 
 @Component({
-  templateUrl: './oneonone-insert.component.html',
+  templateUrl: './oneonone-insert-dialog.component.html',
 })
 export class OneononeInsertDialog {
   private readonly destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
