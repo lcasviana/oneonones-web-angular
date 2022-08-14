@@ -1,4 +1,4 @@
-import { EmployeeEntity } from './employee.entity';
+import { EmployeeModel } from './employee.model';
 
 export class MeetingInsert {
   constructor(
@@ -19,14 +19,14 @@ export class MeetingUpdate {
 export class MeetingOutput {
   constructor(
     public id: string,
-    public leader: EmployeeEntity,
-    public led: EmployeeEntity,
+    public leader: EmployeeModel,
+    public led: EmployeeModel,
     public meetingDate: Date,
     public annotation: string | null = null,
   ) { }
 }
 
-export class MeetingEntity {
+export class MeetingModel {
   constructor(
     public id: string,
     public meetingDate: Date,

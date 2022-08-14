@@ -1,4 +1,4 @@
-export class StatusEntity {
+export class StatusModel {
   constructor(
     public lastMeeting: Date | null = null,
     public nextMeeting: Date | null = null,

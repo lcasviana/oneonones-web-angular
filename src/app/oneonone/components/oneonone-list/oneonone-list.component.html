@@ -1,0 +1,39 @@
+<section class="column gap margin">
+  <mat-card>
+    <section class="column">
+      <p class="mat-p">New One-on-one</p>
+      <mat-form-field appearance="outline">
+        <mat-label>Is Leader?</mat-label>
+        <mat-select #isLeader>
+          <mat-option *ngFor="let leader of [true, false]" [value]="leader">
+            {{leader ? 'Yes' : 'No'}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Cowoker</mat-label>
+        <mat-select #coworker>
+          <mat-option *ngFor="let coworker of employees" [value]="coworker.id">
+            {{coworker.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Frequency</mat-label>
+        <mat-select #frequency>
+          <mat-option *ngFor="let frequency of [7,15,30,60,90,180,365,999]" [value]="frequency">
+            {{frequency | frequency}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <section class="row gap right">
+        <button mat-button color="primary" (click)="isLeader.value = null; coworker.value = null; frequency.value = null;">Clear</button>
+        <button mat-raised-button color="primary" (click)="insertOneonone(isLeader.value, coworker.value, frequency.value)">Insert</button>
+      </section>
+    </section>
+  </mat-card>
+
+  <ng-container *ngFor="let oneonone of oneonones">
+    <app-oneonone-list-item [employee]="employee" [oneonone]="oneonone"></app-oneonone-list-item>
+  </ng-container>
+</section>

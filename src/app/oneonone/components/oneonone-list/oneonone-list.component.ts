@@ -1,10 +1,10 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ReplaySubject, takeUntil } from 'rxjs';
-import { EmployeeEntity } from '../../entities/employee.entity';
-import { OneononeEntity } from '../../entities/oneonone.entity';
-import { EmployeeRepository } from '../../repositories/employee.repository';
-import { OneononeRepository } from '../../repositories/oneonone.repository';
+import { EmployeeModel } from '../../models/employee.model';
+import { OneononeModel } from '../../models/oneonone.model';
+import { EmployeeRepository } from '../../data/employee.repository';
+import { OneononeRepository } from '../../data/oneonone.repository';
 
 @Component({
   selector: 'app-oneonone-list',
@@ -13,10 +13,10 @@ import { OneononeRepository } from '../../repositories/oneonone.repository';
 export class OneononeListComponent implements OnInit, OnDestroy {
   private readonly destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
 
-  @Input() employee: EmployeeEntity = null!;
-  @Input() oneonones: OneononeEntity[] = null!;
+  @Input() employee: EmployeeModel = null!;
+  @Input() oneonones: OneononeModel[] = null!;
 
-  employees: EmployeeEntity[] = [];
+  employees: EmployeeModel[] = [];
 
   constructor(
     private snackBar: MatSnackBar,
@@ -27,7 +27,7 @@ export class OneononeListComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.employeeRepository.getAll()
       .pipe(takeUntil(this.destroyed$))
-      .subscribe(employees => this.employees = employees);
+      .subscribe(employees => this.employees = employees.filter(employee => employee.id !== this.employee.id));
   }
 
   ngOnDestroy(): void {

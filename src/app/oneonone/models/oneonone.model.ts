@@ -1,6 +1,6 @@
-import { EmployeeEntity } from './employee.entity';
-import { MeetingEntity } from './meeting.entity';
-import { StatusEntity } from './status.entity';
+import { EmployeeModel } from './employee.model';
+import { MeetingModel } from './meeting.model';
+import { StatusModel } from './status.model';
 
 export class OneononeInsert {
   constructor(
@@ -19,19 +19,19 @@ export class OneononeUpdate {
 export class OneononeOutput {
   constructor(
     public id: string,
-    public leader: EmployeeEntity,
-    public led: EmployeeEntity,
+    public leader: EmployeeModel,
+    public led: EmployeeModel,
     public frequency: number,
   ) { }
 }
 
-export class OneononeEntity {
+export class OneononeModel {
   constructor(
     public id: string,
-    public leader: EmployeeEntity,
-    public led: EmployeeEntity,
+    public leader: EmployeeModel,
+    public led: EmployeeModel,
     public frequency: number,
-    public meetings: MeetingEntity[],
-    public status: StatusEntity,
+    public meetings: MeetingModel[],
+    public status: StatusModel,
   ) { }
 }

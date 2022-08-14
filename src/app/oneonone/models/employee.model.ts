@@ -5,7 +5,7 @@ export class EmployeeInput {
   ) { }
 }
 
-export class EmployeeEntity {
+export class EmployeeModel {
   constructor(
     public id: string,
     public email: string,

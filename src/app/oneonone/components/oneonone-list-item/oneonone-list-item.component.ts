@@ -1,10 +1,10 @@
 import { Component, Input, OnDestroy } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ReplaySubject, takeUntil } from 'rxjs';
-import { EmployeeEntity } from '../../entities/employee.entity';
-import { OneononeEntity, OneononeUpdate } from '../../entities/oneonone.entity';
-import { MeetingRepository } from '../../repositories/meeting.repository';
-import { OneononeRepository } from '../../repositories/oneonone.repository';
+import { EmployeeModel } from '../../models/employee.model';
+import { OneononeModel } from '../../models/oneonone.model';
+import { MeetingRepository } from '../../data/meeting.repository';
+import { OneononeRepository } from '../../data/oneonone.repository';
 
 @Component({
   selector: 'app-oneonone-list-item',
@@ -13,8 +13,8 @@ import { OneononeRepository } from '../../repositories/oneonone.repository';
 export class OneononeListItemComponent implements OnDestroy {
   private readonly destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
 
-  @Input() employee: EmployeeEntity = null!;
-  @Input() oneonone: OneononeEntity = null!;
+  @Input() employee: EmployeeModel = null!;
+  @Input() oneonone: OneononeModel = null!;
 
   constructor(
     private snackBar: MatSnackBar,
@@ -54,25 +54,6 @@ export class OneononeListItemComponent implements OnDestroy {
       .subscribe({
         next: _ => this.snackBar.open('Meeting inserted.', 'OK'),
         error: _ => this.snackBar.open('Error inserting meeting.', 'OK'),
-      });
-  }
-
-  updateMeeting(meetingId: string, dateString: string, annotation: string) {
-    const meetingDate = new Date(dateString);
-    this.meetingRepository.update(meetingId, { meetingDate, annotation })
-      .pipe(takeUntil(this.destroyed$))
-      .subscribe({
-        next: _ => this.snackBar.open('Meeting updated.', 'OK'),
-        error: _ => this.snackBar.open('Error updating meeting.', 'OK'),
-      });
-  }
-
-  deleteMeeting(meetingId: string) {
-    this.meetingRepository.delete(meetingId)
-      .pipe(takeUntil(this.destroyed$))
-      .subscribe({
-        next: _ => this.snackBar.open('Meeting deleted.', 'OK'),
-        error: _ => this.snackBar.open('Error deleting meeting.', 'OK'),
       });
   }
 }

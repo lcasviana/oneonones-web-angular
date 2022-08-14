@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ReplaySubject, takeUntil, tap } from 'rxjs';
-import { DashboardEntity } from '../entities/dashboard.entity';
-import { DashboardRepository } from '../repositories/dashboard.repository';
+import { DashboardModel } from '../models/dashboard.model';
+import { DashboardRepository } from '../data/dashboard.repository';
 
 @Component({
   templateUrl: './oneonone.component.html',
@@ -9,7 +9,7 @@ import { DashboardRepository } from '../repositories/dashboard.repository';
 export class OneononeComponent implements OnInit, OnDestroy {
   private readonly destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
 
-  dashboard: DashboardEntity | null = null;
+  dashboard: DashboardModel | null = null;
 
   constructor(
     private dashboardRepository: DashboardRepository,
