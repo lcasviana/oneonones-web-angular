@@ -19,7 +19,7 @@ export class OneononeComponent implements OnInit, OnDestroy {
     this.dashboardRepository.getByEmail('lucas@viana.br')
       .pipe(
         takeUntil(this.destroyed$),
-        tap((dashboard) => console.log(dashboard))
+        tap((dashboard) => console.log(dashboard)),
       ).subscribe((dashboard) => this.dashboard = dashboard);
   }
 
