@@ -11,17 +11,3 @@
   </mat-form-field>
   <button mat-button (click)="insertMeeting(meetingDate.value, annotation.value)">Insert</button>
 </mat-card>
-<mat-card>
-  <mat-form-field appearance="fill">
-    <mat-label>Frequency</mat-label>
-    <mat-select #frequency>
-      <mat-option *ngFor="let frequency of [7,15,30,60,90,180,365,999]" [value]="frequency">
-        {{frequency | frequency}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <button mat-button (click)="updateOneonone(oneonone.id, frequency.value)">Update</button>
-</mat-card>
-<mat-card>
-  <button mat-button (click)="deleteOneonone(oneonone.id)">Delete</button>
-</mat-card>

@@ -4,6 +4,7 @@ import { OneononeModel } from '../../models/oneonone.model';
 import { MatDialog } from '@angular/material/dialog';
 import { OneononeUpdateDialog } from '../oneonone-dialog/oneonone-update-dialog/oneonone-update-dialog.component';
 import { OneononeDeleteDialog } from '../oneonone-dialog/oneonone-delete-dialog/oneonone-delete-dialog.component';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-oneonone-list-item',
@@ -13,7 +14,10 @@ export class OneononeListItemComponent {
   @Input() employee: EmployeeModel = null!;
   @Input() oneonone: OneononeModel = null!;
 
-  constructor(public dialog: MatDialog) { }
+  constructor(
+    private dialog: MatDialog,
+    private router: Router,
+    ) { }
 
   updateOneonone(): void {
     this.dialog.open(OneononeUpdateDialog, { data: { oneonone: this.oneonone } });
@@ -23,21 +27,7 @@ export class OneononeListItemComponent {
     this.dialog.open(OneononeDeleteDialog, { data: { oneonone: this.oneonone } });
   }
 
-  // insertMeeting(): void {
-  //   this.dialog.open(OneononeMeetingInsertDialog);
-  // }
-
-  
-
-  // insertMeeting(dateString: string, annotation: string) {
-  //   const leaderId = this.oneonone.leader.id;
-  //   const ledId = this.oneonone.led.id;
-  //   const meetingDate = new Date(dateString);
-  //   this.meetingRepository.insert({ leaderId, ledId, meetingDate, annotation })
-  //     .pipe(takeUntil(this.destroyed$))
-  //     .subscribe({
-  //       next: _ => this.snackBar.open('Meeting inserted.', 'OK'),
-  //       error: _ => this.snackBar.open('Error inserting meeting.', 'OK'),
-  //     });
-  // }
+  meetings(): void {
+    this.router.navigateByUrl(`/${this.oneonone.id}`);
+  }
 }

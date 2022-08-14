@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ReplaySubject, takeUntil } from 'rxjs';
-import { DashboardModel } from '../models/dashboard.model';
-import { DashboardState } from '../services/dashboard-state.service';
+import { DashboardModel } from '../../models/dashboard.model';
+import { DashboardState } from '../../services/dashboard-state.service';
 
 @Component({
   templateUrl: './oneonone.component.html',
