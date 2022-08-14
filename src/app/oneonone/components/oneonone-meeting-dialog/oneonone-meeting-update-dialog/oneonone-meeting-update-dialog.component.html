@@ -1,11 +1,20 @@
-<mat-form-field appearance="fill">
-  <mat-label>Meeting Date</mat-label>
-  <input #meetingDate matInput [matDatepicker]="picker">
-  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker #picker></mat-datepicker>
-</mat-form-field>
-<mat-form-field appearance="fill">
-  <mat-label>Annotation</mat-label>
-  <textarea #annotation matInput placeholder="..."></textarea>
-</mat-form-field>
-<button mat-button (click)="updateMeeting(meeting.id, meetingDate.value, annotation.value)">Update</button>
+<h1 mat-dialog-title>Update meeting</h1>
+<mat-dialog-content>
+  <section class="column">
+    <mat-form-field appearance="outline">
+      <mat-label>Meeting Date</mat-label>
+      <input #meetingDate matInput [matDatepicker]="picker">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Annotation</mat-label>
+      <textarea #annotation matInput placeholder="..."></textarea>
+    </mat-form-field>
+  </section>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button color="primary" (click)="meetingDate.value = ''; annotation.value = '';">Clear</button>
+  <button mat-raised-button color="primary"
+    (click)="updateMeeting(meeting.id, meetingDate.value, annotation.value)">Update</button>
+</mat-dialog-actions>

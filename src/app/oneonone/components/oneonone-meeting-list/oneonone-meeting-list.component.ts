@@ -13,6 +13,6 @@ export class OneononeMeetingListComponent {
   constructor(public dialog: MatDialog) { }
 
   insertMeeting(): void {
-    this.dialog.open(OneononeMeetingInsertDialog);
+    this.dialog.open(OneononeMeetingInsertDialog, { data: { oneonone: this.oneonone } });
   }
 }
