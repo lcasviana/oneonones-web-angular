@@ -14,6 +14,8 @@ const frequencyDescriptions: Map<number, string> = new Map([
 @Pipe({ name: 'frequency' })
 export class OneononeFrequencyPipe implements PipeTransform {
   transform(value: number): string {
-    return frequencyDescriptions.get(value) ?? 'Invalid';
+    const description = frequencyDescriptions.get(value);
+    if (!description) throw 'Invalid frequency value.'
+    return description;
   }
 }

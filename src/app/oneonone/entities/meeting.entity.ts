@@ -1,27 +1,35 @@
 import { EmployeeEntity } from './employee.entity';
 
 export class MeetingInsert {
-  leaderId: string = null!;
-  ledId: string = null!;
-  meetingDate: Date = null!;
-  annotation: string | null = null;
+  constructor(
+    public leaderId: string,
+    public ledId: string,
+    public meetingDate: Date,
+    public annotation: string | null = null,
+  ) { }
 }
 
 export class MeetingUpdate {
-  meetingDate: Date = null!;
-  annotation: string | null = null;
+  constructor(
+    public meetingDate: Date,
+    public annotation: string | null = null,
+  ) { }
 }
 
 export class MeetingOutput {
-  id: string = null!;
-  leader: EmployeeEntity = null!;
-  led: EmployeeEntity = null!;
-  meetingDate: Date = null!;
-  annotation: string | null = null;
+  constructor(
+    public id: string,
+    public leader: EmployeeEntity,
+    public led: EmployeeEntity,
+    public meetingDate: Date,
+    public annotation: string | null = null,
+  ) { }
 }
 
 export class MeetingEntity {
-  id: string = null!;
-  meetingDate: Date = null!;
-  annotation: string | null = null;
+  constructor(
+    public id: string,
+    public meetingDate: Date,
+    public annotation: string | null = null,
+  ) { }
 }

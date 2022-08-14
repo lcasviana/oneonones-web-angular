@@ -3,27 +3,35 @@ import { MeetingEntity } from './meeting.entity';
 import { StatusEntity } from './status.entity';
 
 export class OneononeInsert {
-  leaderId: string = null!;
-  ledId: string = null!;
-  frequency: number = null!;
+  constructor(
+    public leaderId: string,
+    public ledId: string,
+    public frequency: number,
+  ) { }
 }
 
 export class OneononeUpdate {
-  frequency: number = null!;
+  constructor(
+    public frequency: number,
+  ) { }
 }
 
 export class OneononeOutput {
-  id: string = null!;
-  leader: EmployeeEntity = null!;
-  led: EmployeeEntity = null!;
-  frequency: number = null!;
+  constructor(
+    public id: string,
+    public leader: EmployeeEntity,
+    public led: EmployeeEntity,
+    public frequency: number,
+  ) { }
 }
 
 export class OneononeEntity {
-  id: string = null!;
-  leader: EmployeeEntity = null!;
-  led: EmployeeEntity = null!;
-  frequency: number = null!;
-  meetings: MeetingEntity[] = null!;
-  status: StatusEntity = null!;
+  constructor(
+    public id: string,
+    public leader: EmployeeEntity,
+    public led: EmployeeEntity,
+    public frequency: number,
+    public meetings: MeetingEntity[],
+    public status: StatusEntity,
+  ) { }
 }

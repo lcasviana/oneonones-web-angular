@@ -1,5 +1,7 @@
 export class StatusEntity {
-  lastMeeting: Date | null = null;
-  nextMeeting: Date | null = null;
-  isLate: boolean | null = null;
+  constructor(
+    public lastMeeting: Date | null = null,
+    public nextMeeting: Date | null = null,
+    public isLate: boolean | null = null,
+  ) { }
 }

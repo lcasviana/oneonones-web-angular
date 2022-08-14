@@ -1,10 +1,14 @@
 export class EmployeeInput {
-  email: string = null!;
-  name: string = null!
+  constructor(
+    public email: string,
+    public name: string,
+  ) { }
 }
 
 export class EmployeeEntity {
-  id: string = null!;
-  email: string = null!;
-  name: string = null!
+  constructor(
+    public id: string,
+    public email: string,
+    public name: string,
+  ) { }
 }

@@ -1,4 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ReplaySubject, takeUntil } from 'rxjs';
 import { EmployeeEntity } from '../../entities/employee.entity';
 import { OneononeEntity } from '../../entities/oneonone.entity';
@@ -18,6 +19,7 @@ export class OneononeListComponent implements OnInit, OnDestroy {
   employees: EmployeeEntity[] = [];
 
   constructor(
+    private snackBar: MatSnackBar,
     private employeeRepository: EmployeeRepository,
     private oneononeRepository: OneononeRepository,
   ) { }
@@ -33,11 +35,14 @@ export class OneononeListComponent implements OnInit, OnDestroy {
     this.destroyed$.complete();
   }
 
-  insertOneonone(isLeader: boolean, employeeId: string, frequency: number) {
-    const leaderId = isLeader ? employeeId : this.employee.id;
-    const ledId = isLeader ? this.employee.id : employeeId;
+  insertOneonone(isLeader: boolean, coworkerId: string, frequency: number) {
+    const leaderId = isLeader ? coworkerId : this.employee.id;
+    const ledId = isLeader ? this.employee.id : coworkerId;
     this.oneononeRepository.insert({ leaderId, ledId, frequency })
       .pipe(takeUntil(this.destroyed$))
-      .subscribe(_ => alert('Ok'));
+      .subscribe({
+        next: _ => this.snackBar.open('One-on-one inserted.', 'OK'),
+        error: _ => this.snackBar.open('Error inserting one-on-one.', 'OK'),
+      });
   }
 }
