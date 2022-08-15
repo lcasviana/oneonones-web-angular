@@ -1,0 +1,37 @@
+<mat-card>
+  <section class="column">
+    <section class="row gap">
+      <div *ngIf="employee.id !== oneonone.leader.id">
+        <h6 class="mat-caption">Leader</h6>
+        <h3 class="mat-h3">{{oneonone.leader.name}}</h3>
+      </div>
+      <div *ngIf="employee.id !== oneonone.led.id">
+        <h6 class="mat-caption">Led</h6>
+        <h3 class="mat-h3">{{oneonone.led.name}}</h3>
+      </div>
+      <div>
+        <h6 class="mat-caption">Frequency</h6>
+        <h3 class="mat-h3">{{oneonone.frequency | frequency}}</h3>
+      </div>
+    </section>
+    <section class="row gap" *ngIf="oneonone.frequency !== 999 && oneonone.meetings.length">
+      <div>
+        <h6 class="mat-caption">Last Meeting</h6>
+        <h3 class="mat-h3">{{oneonone.status.lastMeeting | date: 'dd/MM/yyyy'}}</h3>
+      </div>
+      <div>
+        <h6 class="mat-caption">Next Meeting</h6>
+        <h3 class="mat-h3">{{oneonone.status.nextMeeting | date: 'dd/MM/yyyy'}}</h3>
+      </div>
+      <div>
+        <h6 class="mat-caption">Is Late?</h6>
+        <h3 class="mat-h3">{{oneonone.status.isLate ? 'Yes' : 'No'}}</h3>
+      </div>
+    </section>
+  </section>
+  <mat-card-actions align="end">
+    <button mat-stroked-button (click)="deleteOneonone()">Delete</button>
+    <button mat-stroked-button (click)="updateOneonone()">Update</button>
+    <button mat-raised-button color="primary" (click)="meetings()">Meetings</button>
+  </mat-card-actions>
+</mat-card>
