@@ -1,0 +1,7 @@
+<section class="column gap margin">
+  <button mat-stroked-button color="primary" routerLink="/">Return</button>
+  <button mat-stroked-button color="primary" (click)="insertMeeting()">Insert</button>
+  <ng-container *ngFor="let meeting of oneonone.meetings">
+    <app-oneonone-meeting-list-item [meeting]="meeting"></app-oneonone-meeting-list-item>
+  </ng-container>
+</section>
