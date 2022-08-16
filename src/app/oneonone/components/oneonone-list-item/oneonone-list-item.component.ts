@@ -4,7 +4,7 @@ import { OneononeModel } from '../../models/oneonone.model';
 import { MatDialog } from '@angular/material/dialog';
 import { OneononeUpdateDialog } from '../oneonone-dialog/oneonone-update-dialog/oneonone-update-dialog.component';
 import { OneononeDeleteDialog } from '../oneonone-dialog/oneonone-delete-dialog/oneonone-delete-dialog.component';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-oneonone-list-item',
@@ -17,7 +17,7 @@ export class OneononeListItemComponent {
   constructor(
     private dialog: MatDialog,
     private router: Router,
-    ) { }
+  ) { }
 
   updateOneonone(): void {
     this.dialog.open(OneononeUpdateDialog, { data: { oneonone: this.oneonone } });
