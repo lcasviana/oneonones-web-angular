@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, Inject, Input, Renderer2 } from '@angular/core';
+import { Component, Inject, Renderer2 } from '@angular/core';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 
 @Component({

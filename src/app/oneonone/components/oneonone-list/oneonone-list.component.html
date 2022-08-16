@@ -1,6 +1,10 @@
-<section class="column gap margin">
+<section fxLayout="column" fxLayoutGap="1rem" fxLayoutAlign="start center" class="margin-small">
   <button mat-stroked-button color="primary" (click)="insertOneonone()">Insert</button>
-  <ng-container *ngFor="let oneonone of oneonones">
-    <app-oneonone-list-item [employee]="employee" [oneonone]="oneonone"></app-oneonone-list-item>
-  </ng-container>
+  <section fxLayout="row wrap" fxLayout.lt-md="column" fxLayoutAlign="center start" fxLayoutAlign.lt-md="center stretch"
+    fxLayoutGap="1rem" fxFlexAlign="stretch">
+    <ng-container *ngFor="let oneonone of oneonones">
+      <app-oneonone-list-item fxFlex="100" fxFlex.gt-md="40" fxFlex.gt-lg="30" [employee]="employee"
+        [oneonone]="oneonone"></app-oneonone-list-item>
+    </ng-container>
+  </section>
 </section>

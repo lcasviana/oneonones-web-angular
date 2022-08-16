@@ -1,16 +1,16 @@
 <mat-card>
-  <section class="row gap">
-    <div>
+  <section fxLayout="column">
+    <div fxFlex="100">
       <h6 class="mat-caption">Meeting Date</h6>
       <h3 class="mat-h3">{{meeting.meetingDate | date: 'dd/MM/yyyy'}}</h3>
     </div>
-    <div>
+    <div fxFlex="100">
       <h6 class="mat-caption">Annotation</h6>
       <h3 class="mat-h3">{{meeting.annotation}}</h3>
     </div>
   </section>
-  <mat-card-actions align="end">
-    <button mat-stroked-button (click)="deleteMeeting()">Delete</button>
-    <button mat-stroked-button (click)="updateMeeting()">Update</button>
-  </mat-card-actions>
+  <footer fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="0.5rem">
+    <button mat-button color="warn" (click)="deleteMeeting()">Delete</button>
+    <button mat-button color="accent" (click)="updateMeeting()">Update</button>
+  </footer>
 </mat-card>

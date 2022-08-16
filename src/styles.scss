@@ -28,10 +28,16 @@ $mat-theme-dark: mat.define-dark-theme((color: $mat-theme-dark-color));
   @include mat.all-component-themes($mat-theme-dark);
 }
 
-html, body {
+html,
+body,
+app-root {
+  height: 100%;
+  width: 100%;
+
   &.theme-light {
     background: #FFFFFF;
   }
+
   &.theme-dark {
     background: #212121;
   }
@@ -43,28 +49,11 @@ html, body {
   padding: 0;
 }
 
-.column {
-  display: flex;
-  flex-flow: column;
+app-root {
+  display: block;
+  overflow-y: auto;
 }
 
-.row {
-  display: flex;
-  flex-flow: row wrap;
-}
-
-.spacer {
-  flex: 1 1 auto;
-}
-
-.right {
-  justify-content: flex-end;
-}
-
-.gap {
-  gap: 1rem;
-}
-
-.margin {
+.margin-small {
   margin: 1rem;
 }

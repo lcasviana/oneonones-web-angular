@@ -1,6 +1,6 @@
 <h1 mat-dialog-title>Insert meeting</h1>
 <mat-dialog-content>
-  <section class="column">
+  <section fxLayout="column">
     <mat-form-field appearance="outline">
       <mat-label>Meeting Date</mat-label>
       <input #meetingDate matInput [matDatepicker]="picker">
@@ -13,7 +13,7 @@
     </mat-form-field>
   </section>
 </mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-button color="primary" (click)="meetingDate.value = ''; annotation.value = '';">Clear</button>
+<footer fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="0.5rem">
+  <button mat-button color="warn" (click)="meetingDate.value = ''; annotation.value = '';">Clear</button>
   <button mat-raised-button color="primary" (click)="insertMeeting(meetingDate.value, annotation.value)">Insert</button>
-</mat-dialog-actions>
+</footer>

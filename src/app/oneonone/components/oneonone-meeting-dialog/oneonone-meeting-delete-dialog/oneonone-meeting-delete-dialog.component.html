@@ -1,5 +1,5 @@
 <h1 mat-dialog-title>Delete meeting</h1>
-<mat-dialog-actions align="end">
+<footer fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="0.5rem">
   <button mat-button color="primary" (click)="close()">Cancel</button>
-  <button mat-raised-button color="primary" (click)="deleteMeeting(meeting.id)">Delete</button>
-</mat-dialog-actions>
+  <button mat-raised-button color="warn" (click)="deleteMeeting(meeting.id)">Delete</button>
+</footer>
