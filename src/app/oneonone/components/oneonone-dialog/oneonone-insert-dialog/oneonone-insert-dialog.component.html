@@ -1,6 +1,6 @@
 <h1 mat-dialog-title>Insert one-on-one</h1>
 <mat-dialog-content>
-  <section class="column">
+  <section fxLayout="column">
     <mat-form-field appearance="outline">
       <mat-label>Is Leader?</mat-label>
       <mat-select #isLeader>
@@ -27,9 +27,9 @@
     </mat-form-field>
   </section>
 </mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-button color="primary"
+<footer fxLayout="row wrap" fxLayoutAlign="end center" class="gap-xs">
+  <button mat-button color="warn"
     (click)="isLeader.value = null; coworkerId.value = null; frequency.value = null;">Clear</button>
   <button mat-raised-button color="primary"
     (click)="insertOneonone(isLeader.value, coworkerId.value, frequency.value)">Insert</button>
-</mat-dialog-actions>
+</footer>

@@ -1,0 +1,70 @@
+@use '@angular/material' as mat;
+@import '@angular/material/theming';
+@include mat.core();
+
+$mat-primary: mat.define-palette(mat.$teal-palette, 500, 100, 900);
+$mat-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$mat-warn: mat.define-palette(mat.$red-palette);
+
+$mat-theme-light-color: (
+  primary: $mat-primary,
+  accent: $mat-accent,
+  warn: $mat-warn
+);
+$mat-theme-dark-color: (
+  primary: $mat-primary,
+  accent: $mat-accent,
+  warn: $mat-warn
+);
+
+$mat-theme-light: mat.define-light-theme((color: $mat-theme-light-color));
+$mat-theme-dark: mat.define-dark-theme((color: $mat-theme-dark-color));
+
+.theme-light {
+  @include mat.all-component-themes($mat-theme-light);
+}
+
+.theme-dark {
+  @include mat.all-component-themes($mat-theme-dark);
+}
+
+html,
+body,
+app-root {
+  height: 100%;
+  width: 100%;
+
+  &.theme-light {
+    background: #FFFFFF;
+  }
+
+  &.theme-dark {
+    background: #212121;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+app-root {
+  display: block;
+  overflow-y: auto;
+}
+
+$spacing-sm: 1rem;
+$spacing-xs: 0.5rem;
+
+.gap-sm {
+  gap: $spacing-sm;
+}
+
+.gap-xs {
+  gap: $spacing-xs;
+}
+
+.margin-sm {
+  margin: $spacing-sm;
+}

@@ -1,4 +1,13 @@
 <mat-toolbar color="primary">
-  <span>One-on-one's Web Angular</span>
+  <header fxLayout="row" fxFill fxLayoutAlign="space-between center">
+    <span>One-on-one's Web Angular</span>
+    <span fxFlex></span>
+    <mat-slide-toggle [checked]="isDarkMode" (change)="switchTheme($event)">
+      <mat-icon *ngIf="!isDarkMode">light_mode</mat-icon>
+      <mat-icon *ngIf="isDarkMode">dark_mode</mat-icon>
+    </mat-slide-toggle>
+  </header>
 </mat-toolbar>
-<router-outlet></router-outlet>
+<main class="margin-sm">
+  <router-outlet></router-outlet>
+</main>
