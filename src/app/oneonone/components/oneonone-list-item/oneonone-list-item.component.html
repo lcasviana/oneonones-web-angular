@@ -1,36 +1,36 @@
 <mat-card>
   <section fxLayout="column">
-    <section fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="1rem" fxLayoutGap.lt-sm="0rem">
-      <div fxFlex="70" *ngIf="employee.id !== oneonone.leader.id">
+    <section fxLayout="column" fxLayout.gt-xs="row" fxLayoutGap.gt-xs="1rem">
+      <div fxFlex="100" fxFlex.gt-xs="70" *ngIf="employee.id !== oneonone.leader.id">
         <h6 class="mat-caption">Leader</h6>
         <h3 class="mat-h3">{{oneonone.leader.name}}</h3>
       </div>
-      <div fxFlex="70" *ngIf="employee.id !== oneonone.led.id">
+      <div fxFlex="100" fxFlex.gt-xs="70" *ngIf="employee.id !== oneonone.led.id">
         <h6 class="mat-caption">Led</h6>
         <h3 class="mat-h3">{{oneonone.led.name}}</h3>
       </div>
-      <div fxFlex="30">
+      <div fxFlex="100" fxFlex.gt-xs="30">
         <h6 class="mat-caption">Frequency</h6>
         <h3 class="mat-h3">{{oneonone.frequency | frequency}}</h3>
       </div>
     </section>
-    <section fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="1rem" fxLayoutGap.lt-sm="0rem"
+    <section fxLayout="column" fxLayout.gt-xs="row" fxLayoutGap.gt-xs="1rem"
       *ngIf="oneonone.frequency !== 999 && oneonone.meetings.length">
-      <div fxFlex="35">
+      <div fxFlex="100" fxFlex.gt-xs="35">
         <h6 class="mat-caption">Last Meeting</h6>
         <h3 class="mat-h3">{{oneonone.status.lastMeeting | date: 'dd/MM/yyyy'}}</h3>
       </div>
-      <div fxFlex="35">
+      <div fxFlex="100" fxFlex.gt-xs="35">
         <h6 class="mat-caption">Next Meeting</h6>
         <h3 class="mat-h3">{{oneonone.status.nextMeeting | date: 'dd/MM/yyyy'}}</h3>
       </div>
-      <div fxFlex="30">
+      <div fxFlex="100" fxFlex.gt-xs="30">
         <h6 class="mat-caption">Is Late?</h6>
         <h3 class="mat-h3">{{oneonone.status.isLate ? 'Yes' : 'No'}}</h3>
       </div>
     </section>
   </section>
-  <footer fxLayout="row wrap" fxLayoutAlign="end center" fxLayoutGap="0.5rem">
+  <footer fxLayout="row wrap" fxLayoutAlign="end center" class="gap-xs">
     <button mat-button color="warn" (click)="deleteOneonone()">Delete</button>
     <button mat-button color="accent" (click)="updateOneonone()">Update</button>
     <button mat-raised-button color="primary" (click)="meetings()">Meetings</button>

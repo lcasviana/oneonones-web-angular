@@ -1,10 +1,9 @@
-<section fxLayout="column" fxLayoutGap="1rem" fxLayoutAlign="start center">
-  <section fxLayout="row" fxLayoutGap="1rem">
+<section fxLayout="column" fxLayoutAlign="start stretch"class="gap-sm">
+  <section fxLayout="row wrap" fxLayoutAlign="center center"class="gap-sm">
     <button mat-stroked-button color="accent" routerLink="/">Return</button>
     <button mat-stroked-button color="primary" (click)="insertMeeting()">Insert</button>
   </section>
-  <section fxLayout="row wrap" fxLayout.lt-md="column" fxLayoutAlign="center start" fxLayoutAlign.lt-md="center stretch"
-    fxLayoutGap="1rem" fxFlexAlign="stretch">
+  <section fxLayout="column" class="gap-sm">
     <ng-container *ngFor="let meeting of oneonone.meetings">
       <app-oneonone-meeting-list-item fxFlex="100" fxFlex.gt-md="50" fxFlex.gt-lg="30" [meeting]="meeting">
       </app-oneonone-meeting-list-item>
