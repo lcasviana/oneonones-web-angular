@@ -1,7 +1,7 @@
-import { Injectable } from "@angular/core";
-import { mergeMap, Observable, tap } from "rxjs";
-import { EmployeeRepository } from "../data/employee.repository";
-import { EmployeeModel } from "../models/employee.model";
+import { Injectable } from '@angular/core';
+import { mergeMap, Observable, tap } from 'rxjs';
+import { EmployeeRepository } from '../data/employee.repository';
+import { EmployeeModel } from '../models/employee.model';
 
 @Injectable()
 export class EmployeeState {

@@ -1,7 +1,13 @@
-<section class="column gap margin">
-  <button mat-stroked-button color="primary" routerLink="/">Return</button>
-  <button mat-stroked-button color="primary" (click)="insertMeeting()">Insert</button>
-  <ng-container *ngFor="let meeting of oneonone.meetings">
-    <app-oneonone-meeting-list-item [meeting]="meeting"></app-oneonone-meeting-list-item>
-  </ng-container>
+<section fxLayout="column" fxLayoutAlign="start stretch" class="gap-sm">
+  <section fxLayout="row wrap" fxLayoutAlign="center center" class="gap-sm">
+    <button mat-stroked-button color="accent" routerLink="/">Return</button>
+    <button mat-stroked-button color="primary" (click)="insertMeeting()">Insert</button>
+  </section>
+  <section fxLayout="column" fxLayout.gt-sm="row wrap" fxLayoutAlign="start stretch" fxLayoutAlign.gt-sm="center start"
+    class="gap-sm">
+    <ng-container *ngFor="let meeting of oneonone.meetings">
+      <app-oneonone-meeting-list-item fxFlex="100" fxFlex.gt-sm="35rem" [meeting]="meeting">
+      </app-oneonone-meeting-list-item>
+    </ng-container>
+  </section>
 </section>

@@ -22,6 +22,7 @@ import { OneononeMeetingDeleteDialog } from './components/oneonone-meeting-dialo
 import { OneononeMeetingInsertDialog } from './components/oneonone-meeting-dialog/oneonone-meeting-insert-dialog/oneonone-meeting-insert-dialog.component';
 import { OneononeMeetingUpdateDialog } from './components/oneonone-meeting-dialog/oneonone-meeting-update-dialog/oneonone-meeting-update-dialog.component';
 import { OneononeMeetingListItemComponent } from './components/oneonone-meeting-list-item/oneonone-meeting-list-item.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 const routes = [
   { path: '', component: OneononeComponent },
@@ -56,6 +57,7 @@ class OneononeRoutingModule { }
     HttpClientModule,
     OneononeRoutingModule,
     MaterialModule,
+    FlexLayoutModule,
   ],
   providers: [
     DashboardRepository,
