@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { MeetingInsert, MeetingOutput, MeetingUpdate } from '../models/meeting.model';
-import { environment } from 'src/environments/environment.prod';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment.prod';
+import { MeetingInsert, MeetingOutput, MeetingUpdate } from '../models/meeting.model';
 
 @Injectable()
 export class MeetingRepository {

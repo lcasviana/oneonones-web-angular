@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { OneononeInsert, OneononeOutput, OneononeUpdate } from '../models/oneonone.model';
-import { environment } from 'src/environments/environment.prod';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment.prod';
+import { OneononeInsert, OneononeOutput, OneononeUpdate } from '../models/oneonone.model';
 
 @Injectable()
 export class OneononeRepository {

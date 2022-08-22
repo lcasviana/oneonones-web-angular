@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { DashboardModel } from '../models/dashboard.model';
-import { environment } from 'src/environments/environment';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { DashboardModel } from '../models/dashboard.model';
 
 @Injectable()
 export class DashboardRepository {

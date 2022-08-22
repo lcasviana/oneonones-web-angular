@@ -1,24 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './material.module';
-import { RouterModule, Routes } from '@angular/router';
-import { FlexLayoutModule } from '@angular/flex-layout';
-
-const routes: Routes = [
-  {
-    path: '',
-    loadChildren: () => import('./oneonone/oneonone.module').then((m) => m.OneononeModule),
-  },
-  { path: '**', redirectTo: '' },
-];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -26,12 +11,10 @@ export class AppRoutingModule { }
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule,
-    FlexLayoutModule,
+    AppRoutingModule,
+    SharedModule,
   ],
-  providers: [],
   bootstrap: [
     AppComponent,
   ]
