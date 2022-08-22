@@ -1,0 +1,28 @@
+@import './styles/material-theme.scss';
+@import './styles/spacing.scss';
+
+html,
+body,
+app-root {
+  height: 100%;
+  width: 100%;
+
+  &.theme-light {
+    background: #DFDFDF;
+  }
+
+  &.theme-dark {
+    background: #212121;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+app-root {
+  display: block;
+  overflow-y: auto;
+}
