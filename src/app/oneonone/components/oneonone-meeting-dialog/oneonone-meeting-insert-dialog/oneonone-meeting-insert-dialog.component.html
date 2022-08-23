@@ -1,6 +1,12 @@
-<h1 mat-dialog-title>Insert meeting</h1>
+<mat-toolbar color="primary">
+  <span>Insert meeting</span>
+  <span fxFlex></span>
+  <button mat-icon-button (click)="close()">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
 <mat-dialog-content>
-  <section fxLayout="column">
+  <section fxLayout="column" fxFlex.gt-xs="25rem">
     <mat-form-field appearance="outline">
       <mat-label>Meeting Date</mat-label>
       <input #meetingDate matInput [matDatepicker]="picker">
@@ -13,7 +19,8 @@
     </mat-form-field>
   </section>
 </mat-dialog-content>
-<footer fxLayout="row wrap" fxLayoutAlign="end center" class="gap-xs">
+<mat-dialog-actions fxLayout="row wrap" fxLayoutAlign="end center" class="gap-xs">
   <button mat-button color="warn" (click)="meetingDate.value = ''; annotation.value = '';">Clear</button>
-  <button mat-raised-button color="primary" (click)="insertMeeting(meetingDate.value, annotation.value)">Insert</button>
-</footer>
+  <button mat-raised-button color="primary" cdkFocusInitial
+    (click)="insertMeeting(meetingDate.value, annotation.value)">Insert</button>
+</mat-dialog-actions>

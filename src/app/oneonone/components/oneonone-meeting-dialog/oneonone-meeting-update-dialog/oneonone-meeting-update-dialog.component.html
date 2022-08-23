@@ -1,6 +1,12 @@
-<h1 mat-dialog-title>Update meeting</h1>
+<mat-toolbar color="accent">
+  <span>Update meeting</span>
+  <span fxFlex></span>
+  <button mat-icon-button (click)="close()">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
 <mat-dialog-content>
-  <section fxLayout="column">
+  <section fxLayout="column" fxFlex.gt-xs="25rem">
     <mat-form-field appearance="outline">
       <mat-label>Meeting Date</mat-label>
       <input #meetingDate matInput [matDatepicker]="picker">
@@ -13,8 +19,8 @@
     </mat-form-field>
   </section>
 </mat-dialog-content>
-<footer fxLayout="row wrap" fxLayoutAlign="end center" class="gap-xs">
+<mat-dialog-actions fxLayout="row wrap" fxLayoutAlign="end center" class="gap-xs">
   <button mat-button color="warn" (click)="meetingDate.value = ''; annotation.value = '';">Clear</button>
-  <button mat-raised-button color="primary"
+  <button mat-raised-button color="accent" cdkFocusInitial
     (click)="updateMeeting(meeting.id, meetingDate.value, annotation.value)">Update</button>
-</footer>
+</mat-dialog-actions>

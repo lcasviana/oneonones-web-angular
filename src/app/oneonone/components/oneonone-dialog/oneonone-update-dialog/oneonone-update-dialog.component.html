@@ -1,6 +1,12 @@
-<h1 mat-dialog-title>Update one-on-one</h1>
+<mat-toolbar color="accent">
+  <span>Update one-on-one</span>
+  <span fxFlex></span>
+  <button mat-icon-button (click)="close()">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
 <mat-dialog-content>
-  <section fxLayout="column">
+  <section fxLayout="column" fxFlex.gt-xs="25rem">
     <mat-form-field appearance="outline">
       <mat-label>Frequency</mat-label>
       <mat-select #frequency>
@@ -11,7 +17,8 @@
     </mat-form-field>
   </section>
 </mat-dialog-content>
-<footer fxLayout="row wrap" fxLayoutAlign="end center" class="gap-xs">
+<mat-dialog-actions fxLayout="row wrap" fxLayoutAlign="end center" class="gap-xs">
   <button mat-button color="warn" (click)="frequency.value = null;">Clear</button>
-  <button mat-raised-button color="primary" (click)="updateOneonone(oneonone.id, frequency.value)">Update</button>
-</footer>
+  <button mat-raised-button color="accent" cdkFocusInitial
+    (click)="updateOneonone(oneonone.id, frequency.value)">Update</button>
+</mat-dialog-actions>
