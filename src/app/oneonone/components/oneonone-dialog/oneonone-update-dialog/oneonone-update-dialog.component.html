@@ -18,7 +18,12 @@
   </section>
 </mat-dialog-content>
 <mat-dialog-actions fxLayout="row wrap" fxLayoutAlign="end center" class="gap-xs">
-  <button mat-button color="warn" (click)="frequency.value = null;">Clear</button>
-  <button mat-raised-button color="accent" cdkFocusInitial
-    (click)="updateOneonone(oneonone.id, frequency.value)">Update</button>
+  <button mat-button (click)="frequency.value = null;">
+    <mat-icon>clear_all</mat-icon>
+    Clear
+  </button>
+  <button mat-raised-button color="accent" cdkFocusInitial (click)="updateOneonone(oneonone.id, frequency.value)">
+    <mat-icon>edit</mat-icon>
+    Update
+  </button>
 </mat-dialog-actions>

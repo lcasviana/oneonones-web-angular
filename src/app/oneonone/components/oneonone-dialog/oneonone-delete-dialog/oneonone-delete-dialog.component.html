@@ -6,6 +6,12 @@
   </button>
 </mat-toolbar>
 <mat-dialog-actions fxLayout="row wrap" fxLayoutAlign="end center" class="gap-xs">
-  <button mat-button color="warn" (click)="deleteOneonone(oneonone.id)">Delete</button>
-  <button mat-raised-button cdkFocusInitial (click)="close()">Cancel</button>
+  <button mat-button color="warn" (click)="deleteOneonone(oneonone.id)">
+    <mat-icon>delete_forever</mat-icon>
+    Delete
+  </button>
+  <button mat-raised-button cdkFocusInitial (click)="close()">
+    <mat-icon>close</mat-icon>
+    Cancel
+  </button>
 </mat-dialog-actions>

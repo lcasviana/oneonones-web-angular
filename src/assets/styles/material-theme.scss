@@ -7,8 +7,8 @@ $mat-accent-light: mat.define-palette(mat.$pink-palette, 700, 400, 900);
 $mat-warn-light: mat.define-palette(mat.$red-palette, 700, 400, 900);
 
 $mat-primary-dark: mat.define-palette(mat.$teal-palette, 500, 200, 600);
-$mat-accent-dark: mat.define-palette(mat.$pink-palette, 600, 200, 700);
-$mat-warn-dark: mat.define-palette(mat.$red-palette, 700, 200, 800);
+$mat-accent-dark: mat.define-palette(mat.$pink-palette, 500, 200, 600);
+$mat-warn-dark: mat.define-palette(mat.$red-palette, 500, 200, 600);
 
 $mat-theme-light-color: (
   primary: $mat-primary-light,
