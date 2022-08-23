@@ -22,6 +22,7 @@ export class OneononeUpdateDialog {
     private oneononeRepository: OneononeRepository,
   ) {
     this.oneonone = data.oneonone;
+    this.dialog.disableClose = true;
   }
 
   close(): void {

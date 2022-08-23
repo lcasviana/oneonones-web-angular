@@ -21,6 +21,7 @@ export class OneononeDeleteDialog {
     private oneononeRepository: OneononeRepository,
   ) {
     this.oneonone = data.oneonone;
+    this.dialog.disableClose = true;
   }
 
   close(): void {

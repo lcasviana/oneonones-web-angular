@@ -22,6 +22,7 @@ export class OneononeMeetingDeleteDialog {
     private meetingRepository: MeetingRepository,
   ) {
     this.meeting = this.data.meeting;
+    this.dialog.disableClose = true;
   }
 
   close(): void {
