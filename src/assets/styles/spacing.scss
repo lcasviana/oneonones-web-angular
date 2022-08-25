@@ -1,0 +1,14 @@
+$spacing-sm: 1rem;
+$spacing-xs: 0.5rem;
+
+.gap-sm {
+  gap: $spacing-sm;
+}
+
+.gap-xs {
+  gap: $spacing-xs;
+}
+
+.margin-sm {
+  margin: $spacing-sm;
+}

@@ -30,9 +30,18 @@
       </div>
     </section>
   </section>
-  <footer fxLayout="row wrap" fxLayoutAlign="end center" class="gap-xs">
-    <button mat-button color="warn" (click)="deleteOneonone()">Delete</button>
-    <button mat-button color="accent" (click)="updateOneonone()">Update</button>
-    <button mat-raised-button color="primary" (click)="meetings()">Meetings</button>
-  </footer>
+  <mat-card-actions fxLayout="row wrap" fxLayoutAlign="end center" class="gap-xs">
+    <button mat-stroked-button color="warn" (click)="deleteOneonone()">
+      <mat-icon>delete_forever</mat-icon>
+      Delete
+    </button>
+    <button mat-stroked-button color="accent" (click)="updateOneonone()">
+      <mat-icon>edit</mat-icon>
+      Update
+    </button>
+    <button mat-stroked-button color="primary" (click)="meetings()">
+      <mat-icon>supervised_user_circle</mat-icon>
+      Meetings
+    </button>
+  </mat-card-actions>
 </mat-card>

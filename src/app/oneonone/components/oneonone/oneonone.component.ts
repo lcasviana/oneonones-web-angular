@@ -16,7 +16,7 @@ export class OneononeComponent implements OnInit, OnDestroy {
     this.dashboardState.update();
     this.dashboardState.dashboard$
       .pipe(takeUntil(this.destroyed$))
-      .subscribe((dashboard) => this.dashboard = dashboard);
+      .subscribe(dashboard => this.dashboard = dashboard);
   }
 
   ngOnDestroy(): void {

@@ -1,10 +1,10 @@
 import { Component, Input } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { EmployeeModel } from '../../models/employee.model';
 import { OneononeModel } from '../../models/oneonone.model';
-import { MatDialog } from '@angular/material/dialog';
-import { OneononeUpdateDialog } from '../oneonone-dialog/oneonone-update-dialog/oneonone-update-dialog.component';
 import { OneononeDeleteDialog } from '../oneonone-dialog/oneonone-delete-dialog/oneonone-delete-dialog.component';
-import { Router } from '@angular/router';
+import { OneononeUpdateDialog } from '../oneonone-dialog/oneonone-update-dialog/oneonone-update-dialog.component';
 
 @Component({
   selector: 'app-oneonone-list-item',

@@ -26,6 +26,7 @@ export class OneononeInsertDialog {
   ) {
     this.employee = this.employeeState.employee!;
     this.employees = this.employeeState.employees!;
+    this.dialog.disableClose = true;
   }
 
   close(): void {

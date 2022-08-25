@@ -22,6 +22,7 @@ export class OneononeMeetingInsertDialog {
     private meetingRepository: MeetingRepository,
   ) {
     this.oneonone = this.data.oneonone;
+    this.dialog.disableClose = true;
   }
 
   close(): void {
