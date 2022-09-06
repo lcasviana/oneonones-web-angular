@@ -1,4 +1,5 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnDestroy } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ReplaySubject, takeUntil } from 'rxjs';
@@ -10,8 +11,11 @@ import { DashboardState } from 'src/app/oneonone/services/dashboard-state.servic
   templateUrl: 'oneonone-meeting-insert-dialog.component.html'
 })
 
-export class OneononeMeetingInsertDialog {
+export class OneononeMeetingInsertDialog implements OnDestroy {
   private readonly destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
+
+  form: FormGroup;
+
   oneonone: OneononeModel;
 
   constructor(
@@ -21,18 +25,36 @@ export class OneononeMeetingInsertDialog {
     private dashboardState: DashboardState,
     private meetingRepository: MeetingRepository,
   ) {
+    this.form = new FormGroup({
+      meetingDate: new FormControl<string | null>(null, [Validators.required]),
+      annotation: new FormControl<string | null>(null),
+    });
+
     this.oneonone = this.data.oneonone;
     this.dialog.disableClose = true;
+  }
+
+  ngOnDestroy(): void {
+    this.destroyed$.next(true);
+    this.destroyed$.complete();
   }
 
   close(): void {
     this.dialog.close();
   }
 
-  insertMeeting(dateString: string, annotation: string) {
+  clear(): void {
+    this.form.reset();
+  }
+
+  insertMeeting() {
+    if (this.form.invalid) return;
+
     const leaderId = this.oneonone.leader.id;
     const ledId = this.oneonone.led.id;
-    const meetingDate = new Date(dateString);
+    const meetingDate = new Date(this.form.get('meetingDate')?.value);
+    const annotation = this.form.get('annotation')?.value;
+
     this.meetingRepository.insert({ leaderId, ledId, meetingDate, annotation })
       .pipe(takeUntil(this.destroyed$))
       .subscribe({

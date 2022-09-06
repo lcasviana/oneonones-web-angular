@@ -6,26 +6,27 @@
   </button>
 </mat-toolbar>
 <mat-dialog-content>
-  <section fxLayout="column" fxFlex="calc(90vw - 96px)" fxFlex.gt-xs="25rem">
+  <form id="oneonone-meeting-insert-form" (ngSubmit)="insertMeeting()" [formGroup]="form" fxLayout="column"
+    fxFlex="calc(90vw - 96px)" fxFlex.gt-xs="25rem">
     <mat-form-field appearance="outline">
       <mat-label>Meeting Date</mat-label>
-      <input #meetingDate matInput [matDatepicker]="picker">
+      <input formControlName="meetingDate" matInput [matDatepicker]="picker">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="form.get('meetingDate')?.hasError('required')">Required.</mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Annotation</mat-label>
-      <textarea #annotation matInput placeholder="..."></textarea>
+      <textarea formControlName="annotation" matInput placeholder="..."></textarea>
     </mat-form-field>
-  </section>
+  </form>
 </mat-dialog-content>
 <mat-dialog-actions fxLayout="row wrap" fxLayoutAlign="end center" class="gap-xs">
-  <button mat-button (click)="meetingDate.value = ''; annotation.value = '';">
+  <button mat-button (click)="clear()">
     <mat-icon>clear_all</mat-icon>
     Clear
   </button>
-  <button mat-raised-button color="primary" cdkFocusInitial
-    (click)="insertMeeting(meetingDate.value, annotation.value)">
+  <button form="oneonone-meeting-insert-form" mat-raised-button color="primary" cdkFocusInitial>
     <mat-icon>add</mat-icon>
     Insert
   </button>

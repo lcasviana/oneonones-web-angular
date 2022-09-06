@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnDestroy } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ReplaySubject, takeUntil } from 'rxjs';
@@ -10,7 +10,7 @@ import { DashboardState } from 'src/app/oneonone/services/dashboard-state.servic
   templateUrl: 'oneonone-meeting-delete-dialog.component.html'
 })
 
-export class OneononeMeetingDeleteDialog {
+export class OneononeMeetingDeleteDialog implements OnDestroy {
   private readonly destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
   meeting: MeetingModel;
 
@@ -25,11 +25,18 @@ export class OneononeMeetingDeleteDialog {
     this.dialog.disableClose = true;
   }
 
+  ngOnDestroy(): void {
+    this.destroyed$.next(true);
+    this.destroyed$.complete();
+  }
+
   close(): void {
     this.dialog.close();
   }
 
-  deleteMeeting(meetingId: string) {
+  deleteMeeting() {
+    const meetingId = this.meeting.id;
+
     this.meetingRepository.delete(meetingId)
       .pipe(takeUntil(this.destroyed$))
       .subscribe({

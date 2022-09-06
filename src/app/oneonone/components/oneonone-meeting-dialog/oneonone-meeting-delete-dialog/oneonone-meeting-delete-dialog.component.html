@@ -5,8 +5,20 @@
     <mat-icon>close</mat-icon>
   </button>
 </mat-toolbar>
+<mat-dialog-content>
+  <section fxLayout="column" fxFlex="calc(90vw - 96px)" fxFlex.gt-xs="25rem">
+    <div fxFlex="100">
+      <h6 class="mat-caption">Meeting Date</h6>
+      <h3 class="mat-h3">{{meeting.meetingDate | date: 'dd/MM/yyyy'}}</h3>
+    </div>
+    <div fxFlex="100">
+      <h6 class="mat-caption">Annotation</h6>
+      <h3 class="mat-h3">{{meeting.annotation}}</h3>
+    </div>
+  </section>
+</mat-dialog-content>
 <mat-dialog-actions fxLayout="row wrap" fxLayoutAlign="end center" class="gap-xs">
-  <button mat-button color="warn" (click)="deleteMeeting(meeting.id)">
+  <button mat-button color="warn" (click)="deleteMeeting()">
     <mat-icon>delete_forever</mat-icon>
     Delete
   </button>

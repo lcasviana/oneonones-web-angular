@@ -28,14 +28,14 @@ export class OneononeUpdateDialog implements OnDestroy {
     private dashboardState: DashboardState,
     private oneononeRepository: OneononeRepository,
   ) {
-    this.form = new FormGroup({
-      frequency: new FormControl<Frequency | null>(null, [Validators.required]),
-    });
-
     this.employee = this.data.employee;
     this.oneonone = this.data.oneonone;
     this.frequencies = Frequency.values;
     this.dialog.disableClose = true;
+
+    this.form = new FormGroup({
+      frequency: new FormControl<Frequency | null>(this.oneonone.frequency, [Validators.required]),
+    });
   }
 
   ngOnDestroy(): void {
