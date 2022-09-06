@@ -20,11 +20,11 @@ export class OneononeListItemComponent {
   ) { }
 
   updateOneonone(): void {
-    this.dialog.open(OneononeUpdateDialog, { data: { oneonone: this.oneonone } });
+    this.dialog.open(OneononeUpdateDialog, { data: { employee: this.employee, oneonone: this.oneonone } });
   }
 
   deleteOneonone(): void {
-    this.dialog.open(OneononeDeleteDialog, { data: { oneonone: this.oneonone } });
+    this.dialog.open(OneononeDeleteDialog, { data: { employee: this.employee, oneonone: this.oneonone } });
   }
 
   meetings(): void {

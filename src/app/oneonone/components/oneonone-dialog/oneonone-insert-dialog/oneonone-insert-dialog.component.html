@@ -6,40 +6,43 @@
   </button>
 </mat-toolbar>
 <mat-dialog-content>
-  <section fxLayout="column" fxFlex="calc(90vw - 96px)" fxFlex.gt-xs="25rem">
+  <form id="oneonone-insert-form" (ngSubmit)="insertOneonone()" [formGroup]="form" fxLayout="column"
+    fxFlex="calc(90vw - 96px)" fxFlex.gt-xs="25rem">
     <mat-form-field appearance="outline">
       <mat-label>Is Leader?</mat-label>
-      <mat-select #isLeader>
-        <mat-option *ngFor="let option of options" [value]="option">
-          {{option ? 'Yes' : 'No'}}
+      <mat-select formControlName="isLeader">
+        <mat-option *ngFor="let isLeader of [true, false]" [value]="isLeader">
+          {{isLeader ? 'Yes' : 'No'}}
         </mat-option>
       </mat-select>
+      <mat-error *ngIf="form.get('isLeader')?.hasError('required')">Required.</mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Cowoker</mat-label>
-      <mat-select #coworkerId>
-        <mat-option *ngFor="let coworker of employees" [value]="coworker.id">
+      <mat-select formControlName="coworker">
+        <mat-option *ngFor="let coworker of employees" [value]="coworker">
           {{coworker.name}}
         </mat-option>
       </mat-select>
+      <mat-error *ngIf="form.get('coworker')?.hasError('required')">Required.</mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Frequency</mat-label>
-      <mat-select #frequency>
+      <mat-select formControlName="frequency">
         <mat-option *ngFor="let frequency of frequencies" [value]="frequency">
           {{frequency | frequency}}
         </mat-option>
       </mat-select>
+      <mat-error *ngIf="form.get('frequency')?.hasError('required')">Required.</mat-error>
     </mat-form-field>
-  </section>
+  </form>
 </mat-dialog-content>
 <mat-dialog-actions fxLayout="row wrap" fxLayoutAlign="end center" class="gap-xs">
-  <button mat-button (click)="isLeader.value = null; coworkerId.value = null; frequency.value = null;">
+  <button mat-button (click)="clear()">
     <mat-icon>clear_all</mat-icon>
     Clear
   </button>
-  <button mat-raised-button color="primary" cdkFocusInitial
-    (click)="insertOneonone(isLeader.value, coworkerId.value, frequency.value)">
+  <button form="oneonone-insert-form" mat-raised-button color="primary" cdkFocusInitial>
     <mat-icon>add</mat-icon>
     Insert
   </button>

@@ -6,23 +6,39 @@
   </button>
 </mat-toolbar>
 <mat-dialog-content>
-  <section fxLayout="column" fxFlex="calc(90vw - 96px)" fxFlex.gt-xs="25rem">
+  <form id="oneonone-update-form" (ngSubmit)="updateOneonone()" [formGroup]="form" fxLayout="column"
+    fxFlex="calc(90vw - 96px)" fxFlex.gt-xs="25rem">
+    <section fxLayout="column" fxLayout.gt-xs="row" fxLayoutGap.gt-xs="1rem">
+      <div fxFlex="100" fxFlex.gt-xs="70" *ngIf="employee.id !== oneonone.leader.id">
+        <h6 class="mat-caption">Leader</h6>
+        <h3 class="mat-h3">{{oneonone.leader.name}}</h3>
+      </div>
+      <div fxFlex="100" fxFlex.gt-xs="70" *ngIf="employee.id !== oneonone.led.id">
+        <h6 class="mat-caption">Led</h6>
+        <h3 class="mat-h3">{{oneonone.led.name}}</h3>
+      </div>
+      <div fxFlex="100" fxFlex.gt-xs="30">
+        <h6 class="mat-caption">Frequency</h6>
+        <h3 class="mat-h3">{{oneonone.frequency | frequency}}</h3>
+      </div>
+    </section>
     <mat-form-field appearance="outline">
       <mat-label>Frequency</mat-label>
-      <mat-select #frequency>
+      <mat-select formControlName="frequency">
         <mat-option *ngFor="let frequency of frequencies" [value]="frequency">
           {{frequency | frequency}}
         </mat-option>
       </mat-select>
+      <mat-error *ngIf="form.get('frequency')?.hasError('required')">Required.</mat-error>
     </mat-form-field>
-  </section>
+  </form>
 </mat-dialog-content>
 <mat-dialog-actions fxLayout="row wrap" fxLayoutAlign="end center" class="gap-xs">
-  <button mat-button (click)="frequency.value = null;">
+  <button mat-button (click)="clear()">
     <mat-icon>clear_all</mat-icon>
     Clear
   </button>
-  <button mat-raised-button color="accent" cdkFocusInitial (click)="updateOneonone(oneonone.id, frequency.value)">
+  <button form="oneonone-update-form" mat-raised-button color="accent" cdkFocusInitial>
     <mat-icon>edit</mat-icon>
     Update
   </button>

@@ -5,8 +5,26 @@
     <mat-icon>close</mat-icon>
   </button>
 </mat-toolbar>
+<mat-dialog-content>
+  <section fxLayout="column" fxFlex="calc(90vw - 96px)" fxFlex.gt-xs="25rem">
+    <section fxLayout="column" fxLayout.gt-xs="row" fxLayoutGap.gt-xs="1rem">
+      <div fxFlex="100" fxFlex.gt-xs="70" *ngIf="employee.id !== oneonone.leader.id">
+        <h6 class="mat-caption">Leader</h6>
+        <h3 class="mat-h3">{{oneonone.leader.name}}</h3>
+      </div>
+      <div fxFlex="100" fxFlex.gt-xs="70" *ngIf="employee.id !== oneonone.led.id">
+        <h6 class="mat-caption">Led</h6>
+        <h3 class="mat-h3">{{oneonone.led.name}}</h3>
+      </div>
+      <div fxFlex="100" fxFlex.gt-xs="30">
+        <h6 class="mat-caption">Frequency</h6>
+        <h3 class="mat-h3">{{oneonone.frequency | frequency}}</h3>
+      </div>
+    </section>
+  </section>
+</mat-dialog-content>
 <mat-dialog-actions fxLayout="row wrap" fxLayoutAlign="end center" class="gap-xs">
-  <button mat-button color="warn" (click)="deleteOneonone(oneonone.id)">
+  <button mat-button color="warn" (click)="deleteOneonone()">
     <mat-icon>delete_forever</mat-icon>
     Delete
   </button>

@@ -1,4 +1,5 @@
 import { EmployeeModel } from './employee.model';
+import { Frequency } from './frequency.enum';
 import { MeetingModel } from './meeting.model';
 import { StatusModel } from './status.model';
 
@@ -6,13 +7,13 @@ export class OneononeInsert {
   constructor(
     public leaderId: string,
     public ledId: string,
-    public frequency: number,
+    public frequency: Frequency,
   ) { }
 }
 
 export class OneononeUpdate {
   constructor(
-    public frequency: number,
+    public frequency: Frequency,
   ) { }
 }
 
@@ -21,7 +22,7 @@ export class OneononeOutput {
     public id: string,
     public leader: EmployeeModel,
     public led: EmployeeModel,
-    public frequency: number,
+    public frequency: Frequency,
   ) { }
 }
 
