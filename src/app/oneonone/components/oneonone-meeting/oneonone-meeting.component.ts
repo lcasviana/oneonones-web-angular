@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { mergeMap, ReplaySubject, takeUntil, tap } from 'rxjs';
 import { DashboardModel } from '../../models/dashboard.model';
+import { EmployeeModel } from '../../models/employee.model';
 import { OneononeModel } from '../../models/oneonone.model';
 import { DashboardState } from '../../services/dashboard-state.service';
 
@@ -11,6 +12,8 @@ import { DashboardState } from '../../services/dashboard-state.service';
 export class OneononeMeetingComponent implements OnInit, OnDestroy {
   private readonly destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
   private dashboard: DashboardModel | null = null;
+
+  employee: EmployeeModel | null = null;
   oneonone: OneononeModel | null = null;
 
   constructor(
@@ -28,8 +31,9 @@ export class OneononeMeetingComponent implements OnInit, OnDestroy {
         mergeMap(_ => this.activatedRoute.params),
       ).subscribe(params => {
         const id = params['id'];
+        this.employee = this.dashboard?.employee ?? null;
         this.oneonone = this.dashboard?.oneonones.find(ononone => ononone.id === id) ?? null;
-        if (!this.oneonone) this.router.navigateByUrl(`/`);
+        if (!this.employee || !this.oneonone) this.router.navigateByUrl(`/`);
       });
   }
 

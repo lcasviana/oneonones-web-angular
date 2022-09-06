@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { EmployeeModel } from '../../models/employee.model';
 import { OneononeModel } from '../../models/oneonone.model';
 import { OneononeMeetingInsertDialog } from '../oneonone-meeting-dialog/oneonone-meeting-insert-dialog/oneonone-meeting-insert-dialog.component';
 
@@ -8,6 +9,7 @@ import { OneononeMeetingInsertDialog } from '../oneonone-meeting-dialog/oneonone
   templateUrl: './oneonone-meeting-list.component.html',
 })
 export class OneononeMeetingListComponent {
+  @Input() employee: EmployeeModel = null!;
   @Input() oneonone: OneononeModel = null!;
 
   constructor(public dialog: MatDialog) { }
